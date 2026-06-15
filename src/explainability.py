@@ -38,7 +38,12 @@ def plot_shap_summary(shap_values, X, title: str = "SHAP Summary Plot"):
     shap.summary_plot(shap_values, X, show=False)
     plt.title(title, fontsize=14, pad=12)
     plt.tight_layout()
-    plt.show()
+    import os
+    os.makedirs("plots", exist_ok=True)
+    filename = f"plots/{title.replace(' ', '_').replace('—', '-')}.png"
+    plt.savefig(filename)
+    print(f"Saved plot: {filename}")
+    plt.close()
 
 
 def plot_shap_bar(shap_values, X, title: str = "Mean |SHAP| Feature Importance", top_n: int = 15):
@@ -47,7 +52,12 @@ def plot_shap_bar(shap_values, X, title: str = "Mean |SHAP| Feature Importance",
     shap.summary_plot(shap_values, X, plot_type="bar", max_display=top_n, show=False)
     plt.title(title, fontsize=13)
     plt.tight_layout()
-    plt.show()
+    import os
+    os.makedirs("plots", exist_ok=True)
+    filename = f"plots/{title.replace(' ', '_').replace('|', '').replace('—', '-')}.png"
+    plt.savefig(filename)
+    print(f"Saved plot: {filename}")
+    plt.close()
 
 
 def plot_force(explainer, shap_values_row, X_row, idx: int = 0,
