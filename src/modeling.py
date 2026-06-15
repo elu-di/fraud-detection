@@ -101,14 +101,14 @@ def cross_val_evaluate(model, X, y, k: int = 5) -> dict:
 def save_model(model, name: str) -> Path:
     path = MODELS_DIR / f"{name}.pkl"
     joblib.dump(model, path)
-    print(f"[save_model] saved → {path}")
+    print(f"[save_model] saved -> {path}")
     return path
 
 
 def load_model(name: str):
     path = MODELS_DIR / f"{name}.pkl"
     model = joblib.load(path)
-    print(f"[load_model] loaded ← {path}")
+    print(f"[load_model] loaded <- {path}")
     return model
 
 
